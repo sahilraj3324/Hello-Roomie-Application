@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../apis/api_service.dart';
 import '../../../models/profile_request.dart';
+import '../login/login_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -95,9 +96,16 @@ class _SignupScreenState extends State<SignupScreen> {
       await _apiService.registerProfile(request);
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Profile created successfully!')),
+          const SnackBar(
+            content: Text('Profile created successfully! Please login.'),
+            backgroundColor: Colors.green,
+          ),
         );
-        // Navigate or show success
+        // Navigate to login screen
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const LoginScreen()),
+        );
       }
     } catch (e) {
       if (mounted) {

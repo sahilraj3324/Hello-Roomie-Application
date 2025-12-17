@@ -17,4 +17,28 @@ class ApiService {
       rethrow;
     }
   }
+
+  Future<Response> login({
+    required String contactNumber,
+    required String password,
+  }) async {
+    try {
+      final response = await _client.post(
+        Endpoints.login,
+        data: {'contactNumber': contactNumber, 'password': password},
+      );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<Response> getProfile(String profileId) async {
+    try {
+      final response = await _client.get('${Endpoints.profiles}/$profileId');
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

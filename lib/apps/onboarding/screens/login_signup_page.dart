@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../Auth/login/login_screen.dart';
 import '../../Auth/signup/signup_screen.dart';
 
 class LoginSignupPage extends StatelessWidget {
@@ -77,8 +78,12 @@ class LoginSignupPage extends StatelessWidget {
                 height: 56,
                 child: OutlinedButton(
                   onPressed: () {
-                    // Navigate to Login
-                    print('Login Clicked');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                    );
                   },
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: Colors.grey),
